@@ -17,5 +17,5 @@ Through this project, I have:
 - Populate all fields in the layout accordingly
 
 ## Screenshot of the app.
-![Main Window](https://github.com/ambitamber/News_App//master/screenshots/main-page.png)
-![Second Window](https://github.com/ambitamber/News_App/master/screenshots/second-page.png)
+![Main Window](https://github.com/ambitamber/sandwich-club-udacity_project/blob/master/screenshots/main-page.png)
+![Second Window](https://github.com/ambitamber/sandwich-club-udacity_project/blob/master/screenshots/second-page.png)
