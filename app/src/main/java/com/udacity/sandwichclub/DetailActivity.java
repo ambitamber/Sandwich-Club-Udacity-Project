@@ -38,6 +38,7 @@ public class DetailActivity extends AppCompatActivity {
             closeOnError();
         }
 
+        assert intent != null;
         int position = intent.getIntExtra(EXTRA_POSITION, DEFAULT_POSITION);
         if (position == DEFAULT_POSITION) {
             // EXTRA_POSITION not found in intent
@@ -64,7 +65,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sandwich) {
         //To load Image into ImageView
-        Picasso.get().load(sandwich.getImage()).into(ingredientsIv);
+        Picasso.get().load(sandwich.getImage()).error(R.drawable.image_not_available).into(ingredientsIv);
         //To load origin name into TextView
         origin_tv.setText(sandwich.getPlaceOfOrigin());
         //To load list of Know as List into TextView
