@@ -22,8 +22,6 @@ public class DetailActivity extends AppCompatActivity {
     ImageView ingredientsIv;
     TextView origin_tv,also_known_tv,ingredients_tv,description_tv;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +53,7 @@ public class DetailActivity extends AppCompatActivity {
             closeOnError();
             return;
         }
-
         populateUI(sandwich);
-
         setTitle(sandwich.getMainName());
     }
 
@@ -67,14 +63,28 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
+        //To load Image into ImageView
         Picasso.get().load(sandwich.getImage()).into(ingredientsIv);
+        //To load origin name into TextView
         origin_tv.setText(sandwich.getPlaceOfOrigin());
+        //To load list of Know as List into TextView
         List<String> aka = sandwich.getAlsoKnownAs();
-        String aka_str = TextUtils.join(", ", aka);
+        String aka_str = TextUtils.join(",  ", aka);
         also_known_tv.setText(aka_str);
+        //To load description of sandwich into TextView
         description_tv.setText(sandwich.getDescription());
-        List<String> ingredientsList = sandwich.getIngredients();
-        String ingredientString = TextUtils.join(",",ingredientsList);
-        ingredients_tv.setText(ingredientString);
+        //To Load list of ingredients in TextView
+        if (sandwich.getIngredients() != null && sandwich.getIngredients().size() > 0) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("\u2022 ");
+            stringBuilder.append(sandwich.getIngredients().get(0));
+
+            for (int i = 1; i < sandwich.getIngredients().size(); i++) {
+                stringBuilder.append("\n");
+                stringBuilder.append("\u2022 ");
+                stringBuilder.append(sandwich.getIngredients().get(i));
+            }
+            ingredients_tv.setText(stringBuilder.toString());
+        }
     }
 }
